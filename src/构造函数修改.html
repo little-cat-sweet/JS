@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  //由于每次对象执行它的函数就会为这个函数消耗资源，这种方式十分消耗资源。
+  function Person(name, age) {
+    this.name = name;
+    this.age = age;
+    this.sayHello = function () {
+      alert(this.name + " said hello..")
+    }
+  }
+  var person1 = new Person("Jack", 34);
+  var person2 = new Person("Mary", 20);
+  person1.sayHello();
+  person2.sayHello();
+
+
+  //通过将函数域的函数提到全局域来解决浪费资源的问题。但尽量别再全局写这个，万一有人不知道，也在全局定义了一样的
+  // ，你定义的就被覆盖掉了
+  function sayHello(){
+    alert(this.name + " said hello")
+  }
+  function Human(name, age) {
+    this.name = name;
+    this.age = age;
+    this.say = sayHello;
+  }
+  var human1 = new Human("Jack", 34);
+  var human2 = new Human("Mary", 32);
+  human1.say();
+  human2.say();
+</script>
+</body>
+</html>

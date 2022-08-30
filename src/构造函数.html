@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 构造函数的执行流程：
+    //     1：创建一个新的对象。
+    //     2：新创建的对象被函数中的this指向。
+    //     3：逐行执行函数中的代码。
+    //     4：将新建的对象多为返回值
+    function Person(name, age, address){
+        this.name = name
+        this.age = age
+        this.address = address
+    }
+    var person = new Person("Jack", 23, "Canada")
+    console.log(person)
+</script>
+</body>
+</html>

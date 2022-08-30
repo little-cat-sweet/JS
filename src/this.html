@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--解析器在调用函数时，会想函数传递一个隐含的参数。-->
+<!--这个隐含参数就是this，this指向一个对象。-->
+<!--this指向的对象根据上下文的不同而改变。-->
+<!--谁调用了方法，this就指向调用方法的对象。-->
+<script>
+    var test1 = function(){
+        console.log(this)
+        console.log(this.name);
+    }
+    // 这个相当于window.test1();
+    test1();
+
+    var obj1 = {
+        name : "Jack",
+        sayName : test1
+    }
+    var obj2 = {
+        name : "Mary",
+        sayName : test1
+    }
+    console.log(obj1.sayName())
+    console.log(obj2.sayName())
+</script>
+</body>
+</html>

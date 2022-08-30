@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // 调用函数时创建函数作用域，函数执行完成后，函数作用域销毁
+    // 每调用一次函数就会创建一个新的函数作用域，它们之间是相互独立的
+    // 当在函数中操作一个变量时，它会现在自己的作用域找，找不到再向外找，直到包ReferenceError
+    // 可以在函数中通过window使用全局变量。
+    var a = 10;
+    function hello(){
+        var a = 20;
+        console.log("The a is " + a);
+        console.log("The window a is " + window.a)
+    }
+    hello()
+
+    // 在函数中不适用var就会使用全局变量
+    var b = 19;
+    function test1(){
+        b = 29;
+        console.log("The window b is " + b);
+    }
+    test1()
+
+    // 定义形参相当于在函数作用域中声明了变量。
+    var c = 29;
+    function test2(c){
+        // c没有复制所有值为undefined.
+        console.log("The test2's c is " + c);
+    }
+
+    test2();
+</script>
+
+</body>
+</html>

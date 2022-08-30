@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 全局作用域在页面开始时创建，在页面关闭时销毁
+    // 在全局作用域中有一个全局对象window
+    //  它代表一个浏览器窗口，它由浏览器创建，可以直接使用。
+    // 在全局作用域中：
+    //  创建的变量都作为window对象的属性保存。
+    //  创建的函数都作为window对象的方法保存。
+    var a = 10;
+    var b = 20;
+    console.log(window.a)
+    console.log(window.b)
+    function hello(){
+        alert("Hello world")
+    }
+
+    console.log(window.hello())
+</script>
+</body>
+</html>
