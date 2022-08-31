@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //解决在全局变量定义后，有可能被其他的人的代码覆盖（名字一样嘛之类的导致）,我们就可以将方法定义在原型对象中。
+    // 这里面的原型对象感觉很像Java中的类。
+
+    // 当我们访问一个对象的属性或者方法时，它会现在对象中去找，如果没找到，就会去原型对象中找。
+
+    // 以后创建构造函数时，可以将这些对象共有的方法和属性，统一添加到构造函数的原型对象中。
+    // 这样不用为每个对象添加，也不会影响到作用域，就可以使每个对象都有这些属性和方法了
+
+    function Person(name, age){
+        this.name = name;
+        this.age = age;
+    }
+    // 向Person类中添加sayHello方法
+    Person.prototype.sayHello = function () {
+        console.log(this.name + " said hello to you !!!")
+    }
+
+    var person1 = new Person("Jack", 12);
+    var person2 = new Person("Mary", 56);
+    person1.sayHello();
+    person2.sayHello()
+
+
+    // 构造函数创建的对象的原型对象也有原型对象：
+    //     当我们使用一个对象的属性或者方法时，会先在自身中找：
+    //         自身如果有，则直接使用。
+    //         自身没有，则在原型中找。
+    //         原型没有在原型的原型中找。
+    //         原型的原型也没有则继续找，直到找到object对象。
+    //         object对象没有的话，就只有返回null了。
+
+
+    console.log(person1.hasOwnProperty("name"))
+    console.log(person1.__proto__.hasOwnProperty("hasOwnProperty"))
+    console.log(person1.__proto__.__proto__.hasOwnProperty("hasOwnProperty"))
+</script>
+
+
+</body>
+</html>
