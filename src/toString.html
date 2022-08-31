@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // toString其实跟Java里的toString差不多的
+    function Person(name, age){
+        this.name = name;
+        this.age = age;
+    }
+
+    Person.prototype.toString = function (){
+        return "I am " + this.name + ", and my age is " + this.age;
+    }
+
+    var person1 = new Person("Jack", 34);
+    var person2 = new Person("Mary", 20);
+
+
+    console.log(person1.toString())
+    console.log(person2.toString())
+</script>
+</body>
+</html>
